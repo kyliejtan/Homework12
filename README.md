@@ -16,4 +16,4 @@ In order to build the app, three files needed to be created:
 Here is a flow diagram that details the interaction between the various components of each of the aforementioned files and how they work in concert to bring the Belly Button Biodiversity app's interactive dashboard to life.
 
 Belly Button Biodiversity App
-![Belly Button Biodiversity App](Images/Belly Button App Flowchart.png)
+![Belly Button Biodiversity App](Images/Belly_Button_App_Flowchart.png)
