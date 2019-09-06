@@ -8,7 +8,7 @@ function buildMetadata(sample) {
     // Using `Object.entries` to add each key and value pair to the panel
     // Using d3 to append new tags for each key-value in the metadata.
     Object.entries(sampleData).forEach(([key, value]) => {
-      PANEL.append('h6').text(`${key}, ${value}`);
+      PANEL.append("h6").text(`${key}, ${value}`);
     })
     // BONUS: Build the Gauge Chart
     const wash_freq = sampleData.WFREQ;
@@ -21,25 +21,25 @@ function buildMetadata(sample) {
     let x = radius * Math.cos(radians);
     let y = radius * Math.sin(radians);
     // Initializing path parameters
-    let mainPath = 'M -.0 -0.035 L .0 0.035 L ',
+    let mainPath = "M -.0 -0.035 L .0 0.035 L ",
          pathX = String(x),
-         space = ' ',
+         space = " ",
          pathY = String(y),
-         pathEnd = ' Z';
+         pathEnd = " Z";
     let path = mainPath.concat(pathX,space,pathY,pathEnd);
     // Initializing chart parameters
-    let data = [{ type: 'category',
+    let data = [{ type: "category",
        x: [0], y:[0],
-        marker: {size: 28, color:'850000'},
+        marker: {size: 28, color:"850000"},
         showlegend: false,
-        name: 'speed',
+        name: "speed",
         text: level,
-        hoverinfo: 'text+name'},
+        hoverinfo: "text+name"},
       { values: [1,1,1,1,1,1,1,1,1,9],
       rotation: 90,
       text: ["8-9", "7-8", "6-7", "5-6", "4-5", "3-4", "2-3", "1-2", "0-1"],
-      textinfo: 'text',
-      textposition:'inside',
+      textinfo: "text",
+      textposition:"inside",
       marker: {colors:[
         "rgba(127, 191, 63, 0.9)",
         "rgba(127, 191, 63, 0.8)",
@@ -51,32 +51,32 @@ function buildMetadata(sample) {
         "rgba(127, 191, 63, 0.2)",
         "rgba(127, 191, 63, 0.1)",
         "transparent"]},
-      labels: ['4.5-5', '3.5-4.49', '2.5-3.49', '1.5-2.49', '1-1.49'],
-      hoverinfo: 'label',
+      labels: ["8-9", "7-8", "6-7", "5-6", "4-5", "3-4", "2-3", "1-2", "0-1"],
+      hoverinfo: "label",
       hole: .5,
-      type: 'pie',
+      type: "pie",
       showlegend: false
     }];
     // Initializing layout parameters
     let layout = {
       shapes:[{
-          type: 'path',
+          type: "path",
           path: path,
-          fillcolor: '850000',
+          fillcolor: "850000",
           line: {
-            color: '850000'
+            color: "850000"
           }
         }],
       title: "<b>Belly Button Washing Frequency</b><br>Scrubs Per Week",
       height: 500,
       width: 600,
-      xaxis: {type:'category',zeroline:false, showticklabels:false,
+      xaxis: {type:"category",zeroline:false, showticklabels:false,
                  showgrid: false, range: [-1, 1]},
-      yaxis: {type:'category',zeroline:false, showticklabels:false,
+      yaxis: {type:"category",zeroline:false, showticklabels:false,
                  showgrid: false, range: [-1, 1]}
     };
     // Drawing gauge plot
-    Plotly.newPlot('gauge', data, layout);
+    Plotly.newPlot("gauge", data, layout);
   })
 };
 // Initializing a function that will build the pie and bubble charts
@@ -93,35 +93,36 @@ function buildCharts(sample) {
       x: otu_ids,
       y: sample_values,
       text: otu_labels,
-      mode: 'markers',
+      mode: "markers",
       marker: {
         size: sample_values,
         color: otu_ids,
-        colorscale: 'Earth'
+        colorscale: "Earth"
       }
     }];
     // Initializing the bubble chart layout
     const bubbleLayout = {
       margin: { t: 0 },
-      hovermode: 'closest',
-      xaxis: {title: 'OTU ID'},
+      hovermode: "closest",
+      xaxis: {title: "OTU ID"},
+      yaxis: {title: ""}
     };
     // Drawing the bubble chart
-    Plotly.plot('bubble', bubbleData, bubbleLayout);
+    Plotly.plot("bubble", bubbleData, bubbleLayout);
     // Building Pie Chart
     const pieData = [{
       values: sample_values.slice(0,10),
       labels: otu_ids.slice(0,10),
       hovertext: otu_labels.slice(0,10,),
-      hoverinfo: 'hovertext',
-      type: 'pie'
+      hoverinfo: "hovertext",
+      type: "pie"
     }];
     // Initializing the pie chart layout
     const pieLayout = {
       margin: {t: 0, l: 0}
     }
     // Drawing the pie chart
-    Plotly.plot('pie', pieData, pieLayout);
+    Plotly.plot("pie", pieData, pieLayout);
   });
 }
 // Initializing the init function that will call the previous two functions
