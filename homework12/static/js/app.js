@@ -105,7 +105,7 @@ function buildCharts(sample) {
       margin: { t: 0 },
       hovermode: "closest",
       xaxis: {title: "OTU ID"},
-      yaxis: {title: ""}
+      yaxis: {title: "Sample Values"}
     };
     // Drawing the bubble chart
     Plotly.plot("bubble", bubbleData, bubbleLayout);
